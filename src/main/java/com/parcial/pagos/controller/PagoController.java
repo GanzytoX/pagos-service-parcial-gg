@@ -19,9 +19,14 @@ public class PagoController {
     // POST /pagos/procesar
     @PostMapping("/procesar")
     public ResponseEntity<Pago> procesarPago(@RequestBody Pago pago) {
-        log.info("POST /pagos/procesar - ordenId: {}", pago.getOrdenId());
-        Pago processed = pagoService.procesarPago(pago);
-        return ResponseEntity.status(HttpStatus.CREATED).body(processed);
+        try {
+            log.info("POST /pagos/procesar - ordenId: {}", pago.getOrdenId());
+            Pago processed = pagoService.procesarPago(pago);
+            return ResponseEntity.status(HttpStatus.CREATED).body(processed);
+        } catch (Exception e) {
+            log.error("Error en POST /pagos/procesar - enviando al tópico: {}", pago, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     // GET /pagos/{id}
