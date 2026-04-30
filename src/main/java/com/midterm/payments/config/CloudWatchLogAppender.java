@@ -1,4 +1,4 @@
-package com.parcial.pagos.config;
+package com.midterm.payments.config;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;
@@ -20,8 +20,8 @@ import java.util.UUID;
  */
 public class CloudWatchLogAppender extends AppenderBase<ILoggingEvent> {
 
-    private String logGroupName = "pagos-log-group";
-    private String logStreamName = "pagos-stream-" + UUID.randomUUID().toString().substring(0, 8);
+    private String logGroupName = "payments-log-group";
+    private String logStreamName = "payments-stream-" + UUID.randomUUID().toString().substring(0, 8);
     private String region = "us-east-1";
     private String endpoint;
 

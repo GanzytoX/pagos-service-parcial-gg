@@ -4,8 +4,8 @@
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
 
     <!-- CloudWatch Appender -->
-    <appender name="CLOUDWATCH" class="com.parcial.pagos.config.CloudWatchLogAppender">
-        <logGroupName>pagos-log-group</logGroupName>
+    <appender name="CLOUDWATCH" class="com.midterm.payments.config.CloudWatchLogAppender">
+        <logGroupName>payments-log-group</logGroupName>
         <region>us-east-1</region>
     </appender>
 
@@ -16,5 +16,5 @@
     </root>
 
     <logger name="org.springframework" level="WARN"/>
-    <logger name="com.parcial.pagos" level="DEBUG"/>
+    <logger name="com.midterm.payments" level="DEBUG"/>
 </configuration>

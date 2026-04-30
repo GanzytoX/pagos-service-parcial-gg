@@ -1,4 +1,4 @@
-package com.parcial.pagos.model;
+package com.midterm.payments.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,26 +8,26 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Document(collection = "pagos")
+@Document(collection = "payments")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pago {
+public class Payment {
 
     @Id
     private String id;
 
-    private String ordenId;
+    private String orderId;
 
-    private String usuarioId;
+    private String userId;
 
-    private Double monto;
+    private Double amount;
 
-    /** Métodos: TARJETA, TRANSFERENCIA, EFECTIVO */
-    private String metodo;
+    /** Methods: CARD, TRANSFER, CASH */
+    private String method;
 
-    /** Estados: PENDIENTE, COMPLETADO, REEMBOLSADO, FALLIDO */
-    private String status = "PENDIENTE";
+    /** Statuses: PENDING, COMPLETED, REFUNDED, FAILED */
+    private String status = "PENDING";
 
     private LocalDateTime createdAt = LocalDateTime.now();
 

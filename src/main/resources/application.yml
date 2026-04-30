@@ -4,10 +4,12 @@ server:
 spring:
   application:
     name: pagos-service
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
   data:
     mongodb:
-      uri: ${MONGODB_URI:mongodb://localhost:27030/pagos}
-      database: pagos
+      uri: ${MONGODB_URI:mongodb://localhost:27030/payments}
+      database: payments
 
 eureka:
   client:
