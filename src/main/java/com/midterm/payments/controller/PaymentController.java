@@ -27,6 +27,11 @@ public class PaymentController {
         try {
             log.info("POST /payments/process - orderId: {}", payment.getOrderId());
             Payment processed = paymentService.processPayment(payment);
+            try {
+                kafkaTemplate.send("payment_received_events", objectMapper.writeValueAsString(processed));
+            } catch (Exception kafkaEx) {
+                log.error("Error sending successful payment to Kafka", kafkaEx);
+            }
             return ResponseEntity.status(HttpStatus.CREATED).body(processed);
         } catch (Exception e) {
             log.error("Error in POST /payments/process - sending to topic: {}", payment, e);
